@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Create New Product</h1>
+	<h1 style="margin-top : 60px">Create New Product</h1>
 
 	{{ form_start(form) }}
 	<div class="form-group">
@@ -43,10 +43,10 @@
 		{{ form_errors(form.category) }}
 	</div>
 
-	<button type="submit" class="btn btn-primary">Create Product</button>
+	<button type="submit" class="btn btn-primary" style="margin-top : 20px">Create Product</button>
 	{{ form_end(form) }}
 
-	<a href="{{ path('admin_products') }}" class="btn btn-secondary">Back to Products</a>
+	<a href="{{ path('admin_products') }}" class="btn btn-secondary" style="margin-top : 20px">Back to Products</a>
 
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">{{ message }}</div>

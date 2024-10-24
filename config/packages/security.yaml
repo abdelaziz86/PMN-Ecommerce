@@ -20,13 +20,14 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                default_target_path: user_profile
+                default_target_path: catalog
             logout:
                 path: app_logout
                 target: app_login
             # Required to allow the user to login immediately after registration
             anonymous: true
             lazy: true
+            access_denied_url: /
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
