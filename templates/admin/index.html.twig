@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Products
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Abdelaziz/Desktop/PMN/ecommerce/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Abdelaziz/Desktop/PMN/ecommerce/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<h1>Products</h1>
+	<a href="{{ path('admin_product_new') }}" class="btn btn-primary">Add New Product</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+				<tr>
+					<td>{{ product.name }}</td>
+					<td>{{ product.description }}</td>
+					<td>{{ product.quantity }}</td>
+					<td>{{ product.price }}</td>
+					<td>
+						<a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="btn btn-warning">Edit</a>
+						<a href="{{ path('admin_product_delete', {'id': product.id}) }}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
+
