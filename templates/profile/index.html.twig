@@ -1,0 +1,48 @@
+{# templates/profile/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="mb-4">Profile</h1>
+
+		{# Display flash messages for success and errors #}
+		{% for message in app.session.flashBag.get('success') %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+
+		{% for message in app.session.flashBag.get('error') %}
+			<div class="alert alert-danger">{{ message }}</div>
+		{% endfor %}
+
+		{# Profile edit form #}
+		{{ form_start(form, { 'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'} }) }}
+
+		<div class="mb-3">
+			{{ form_row(form.name) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.surname) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.currentPassword) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.newPassword) }}
+		</div>
+
+		<div class="mb-3">
+			{{ form_row(form.confirmPassword) }}
+		</div>
+
+		<button type="submit" class="btn btn-primary">Update Profile</button>
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
+
