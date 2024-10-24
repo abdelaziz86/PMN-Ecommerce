@@ -1,0 +1,17 @@
+<!-- _form.html.twig -->
+{{ form_start(form, {'attr': {'id': 'editCategoryForm'}}) }}
+
+<div class="form-group">
+	{{ form_label(form.name) }}
+	{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+	{{ form_errors(form.name) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.description) }}
+	{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+	{{ form_errors(form.description) }}
+</div>
+
+{{ form_end(form, { 'render_rest': false }) }}
+

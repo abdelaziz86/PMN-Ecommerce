@@ -7,10 +7,49 @@
 	<h1>Edit Product</h1>
 
 	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	<button class="btn btn-success">Update</button>
+	<div class="form-group">
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.name) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.description) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.quantity) }}
+		{{ form_widget(form.quantity, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.quantity) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.price) }}
+		{{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.price) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.image) }}
+		{{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.image) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.category) }}
+		{{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.category) }}
+	</div>
+
+	<button type="submit" class="btn btn-primary">Update Product</button>
 	{{ form_end(form) }}
 
-	<a href="{{ path('admin_products') }}" class="btn btn-secondary">Back</a>
+	<a href="{{ path('admin_products') }}" class="btn btn-secondary">Back to Products</a>
+
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">{{ message }}</div>
+	{% endfor %}
 {% endblock %}
 

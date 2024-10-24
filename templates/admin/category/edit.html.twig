@@ -4,13 +4,25 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Edit Category</h1>
+	<h1 style="margin-top : 60px">Edit Category</h1>
 
 	{{ form_start(form) }}
-	{{ form_widget(form) }}
-	<button class="btn btn-success">Update</button>
+
+	<div class="form-group">
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.name) }}
+	</div>
+
+	<div class="form-group">
+		{{ form_label(form.description) }}
+		{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+		{{ form_errors(form.description) }}
+	</div>
+
+	<button class="btn btn-success" style="margin-top : 20px">Save changes</button>
 	{{ form_end(form) }}
 
-	<a href="{{ path('admin_categories') }}" class="btn btn-secondary">Back</a>
+	<a href="{{ path('admin_categories') }}" class="btn btn-secondary mt-3" style="margin-top : 20px">Back to Categories</a>
 {% endblock %}
 
