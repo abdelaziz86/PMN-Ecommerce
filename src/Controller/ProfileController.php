@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -22,7 +22,7 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile", name="user_profile")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         // Get the currently logged-in user
         /** @var User $user */
@@ -41,14 +41,14 @@ class ProfileController extends AbstractController
             $currentPassword = $form->get('currentPassword')->getData();
             if ($currentPassword) {
                 // Check if the current password is valid
-                if ($passwordEncoder->isPasswordValid($user->getPassword(), $currentPassword, null)) {
+                if ($passwordHasher->isPasswordValid($user, $currentPassword)) {
                     // Check if new password and confirm password match
                     $newPassword = $form->get('newPassword')->getData();
                     $confirmPassword = $form->get('confirmPassword')->getData();
 
                     if ($newPassword === $confirmPassword) {
                         // Encode the new password and set it
-                        $user->setPassword($passwordEncoder->encodePassword($user, $newPassword));
+                        $user->setPassword($passwordHasher->hashPassword($user, $newPassword));
                     } else {
                         // Add error message if passwords do not match
                         $this->addFlash('error', 'New password and confirmation do not match.');

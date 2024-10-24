@@ -39,10 +39,6 @@ class ProfileEditFormType extends AbstractType
                 'label' => 'Confirm New Password',
                 'mapped' => false, // This field is not part of the User entity
                 'attr' => ['class' => 'form-control', 'placeholder' => 'Confirm new password'],
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Update Profile',
-                'attr' => ['class' => 'btn btn-primary'],
             ]);
     }
 

@@ -23,6 +23,7 @@ security:
                 default_target_path: user_profile
             logout:
                 path: app_logout
+                target: app_login
             # Required to allow the user to login immediately after registration
             anonymous: true
             lazy: true
