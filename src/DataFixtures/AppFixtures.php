@@ -47,7 +47,8 @@ class AppFixtures extends Fixture
             'Thriller Novel', 'Self-Help Book', 'Cookbook', 'Children’s Storybook', 'Travel Guide'
         ];
 
-        $productImages = ['2.png', '3.png', '4.png', '6.jpeg', '7.jpg', 'air.png', 'iphone.jpg'];
+        $productImages = ['asus.png','2.png', '3.png', '4.png', '6.jpeg', '7.jpg', 'air.png', 
+        'iphone.jpg', 'test.png', 'ecran.png', 't.jpg', 'r.jpg', 'h.jpg', 'k.jpg'];
 
         foreach ($productNames as $productName) {
             $product = new Product();
