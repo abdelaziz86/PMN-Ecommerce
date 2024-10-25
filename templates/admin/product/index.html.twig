@@ -28,7 +28,7 @@
 					<td>${{ product.price|number_format(2, '.', ',') }}</td>
 					<td>
 						{% if product.image %}
-							<img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.name }}" width="50" height="50"/>
+							<img style="" src="{{ asset('images/' ~ product.image) }}" alt="{{ product.name }}" width="50" height="50"/>
 						{% endif %}
 					</td>
 					<td>

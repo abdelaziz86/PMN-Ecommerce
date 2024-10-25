@@ -54,10 +54,10 @@ class CatalogController extends AbstractController
         return $this->render('catalog/index.html.twig', [
             'products' => $products,
             'search' => $search,
-            'category' => $selectedCategoryId, // Keep this for general usage
+            'category' => $selectedCategoryId,
             'sort' => $sort,
             'categories' => $categories,
-            'selectedCategoryId' => $selectedCategoryId, // Pass the selected category ID to the view
+            'selectedCategoryId' => $selectedCategoryId, 
         ]);
     }
 }
