@@ -60,4 +60,20 @@ class CatalogController extends AbstractController
             'selectedCategoryId' => $selectedCategoryId, 
         ]);
     }
+
+    /**
+     * @Route("/product/{id}", name="product_detail")
+     */
+    public function productDetail($id, EntityManagerInterface $entityManager): Response
+    {
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException('Product not found');
+        }
+
+        return $this->render('catalog/product_detail.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }

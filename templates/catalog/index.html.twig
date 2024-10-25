@@ -37,18 +37,17 @@
 
 	<div class="row">
 		{% for product in products %}
-			<div class="col-md-4 mb-4">
-				<div class="card">
-					<img style="max-height: 250px; width: auto; overflow: hidden; object-fit : cover" src="{{ asset('images/' ~ product.image) }}" class="card-img-top" alt="{{ product.name }}">
+			<div class="col-md-4 mb-4" >
+				<div class="card" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+					<img style="max-height: 250px; width: auto; overflow: hidden; object-fit: cover" src="{{ asset('images/' ~ product.image) }}" class="card-img-top" alt="{{ product.name }}">
 					<div class="card-body">
 						<h5 class="card-title">{{ product.name }}</h5>
 						<p class="card-text">{{ product.description }}</p>
 						<p class="card-text">
 							<strong>Price:</strong>
-							{{ product.price }}
-							USD
+							{{ product.price }} USD
 						</p>
-						{# <a href="{{ path('product_detail', {'id': product.id}) }}" class="btn btn-info">View Details</a> #}
+						<a href="{{ path('product_detail', {'id': product.id}) }}" class="btn btn-info">View Details</a>
 					</div>
 				</div>
 			</div>
